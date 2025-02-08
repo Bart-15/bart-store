@@ -6,7 +6,7 @@ type ProductPriceProps = {
 };
 
 const ProductPrice = ({ value, className }: ProductPriceProps) => {
-  const stringValue = value.toFixed(2);
+  const stringValue = Number(value).toFixed(2);
   const [intVal, floatVal] = stringValue.split(".");
 
   return (
