@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import ProductPrice from "./product-price";
+import type { Product } from "@/types";
 
 type ProductCardProps = {
-  product: any;
+  product: Product;
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -29,9 +29,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Link>
 
         <div className="flex-between gap-4">
-          <p>{product.rating} Stars</p>
+          <p>{Number(product.rating)} Stars</p>
           {product.stock > 0 ? (
-            <ProductPrice value={product.price} />
+            <ProductPrice value={Number(product.price)} />
           ) : (
             <p className="text-destructive">Out Of Stocks</p>
           )}
