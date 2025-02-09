@@ -28,7 +28,9 @@ const ThemeModeToggle = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <DropdownMenu>
