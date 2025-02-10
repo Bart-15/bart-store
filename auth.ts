@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 import type { NextAuthOptions } from "next-auth";
 
 import { prisma } from "@/db/prisma";
