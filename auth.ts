@@ -79,6 +79,29 @@ export const authOptions = {
 
       return session;
     },
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async jwt({ token, user, trigger, session }: any) {
+      if (user) {
+        token.role = user.role;
+
+        // if user has no name then use the email instead
+        if (user.name === "NO_NAME") {
+          token.name = user.email!.split("@")[0];
+
+          //update db to reflect the token name
+
+          await prisma.user.update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              name: token.name,
+            },
+          });
+        }
+      }
+    },
   },
 } satisfies NextAuthOptions;
 
